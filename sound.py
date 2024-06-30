@@ -30,7 +30,7 @@ while True:# Seçilen sesi oluşturalım ve kaydedelim (sadece bir kere)
         exit()
 
 # Dosyayı oynatmak için ise burada os.system() kullanabiliriz
-os.system("start {}.mp3".format("merhaba" if giris == 1 else 
+    os.system("start {}.mp3".format("merhaba" if giris == 1 else 
                                 "selam" if giris == 2 else 
                                 "tamam" if giris == 3 else 
                                 "basarisiz"))
