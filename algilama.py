@@ -1,5 +1,4 @@
 import speech_recognition as sr
-import pyaudio 
 
 # Tanıma nesnesi oluşturma
 recognizer = sr.Recognizer()
