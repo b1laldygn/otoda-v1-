@@ -1,21 +1,18 @@
 import speech_recognition as sr
 
-# Initialize the recognizer
+# SpeechRecognition objesi oluştur
 recognizer = sr.Recognizer()
 
-# Load an audio file
-audio_file = "sample_audio.wav"
+# Mikrofondan ses al
+with sr.Microphone() as source:
+    print("Konuşun...")
+    audio = recognizer.listen(source)
 
-# Open the audio file
-with sr.AudioFile(audio_file) as source:
-    # Record the audio data
-    audio_data = recognizer.record(source)
-
+    # Konuşmayı metne dönüştür
     try:
-        # Recognize the speech
-        text = recognizer.recognize_google(audio_data)
-        print("Recognized speech: ", text)
+        text = recognizer.recognize_google(audio, language="tr-TR")  # Türkçe olarak tanıma yap
+        print("Söylediğiniz: ", text)
     except sr.UnknownValueError:
-        print("Speech recognition could not understand the audio.")
+        print("Anlaşılamadı")
     except sr.RequestError as e:
-        print(f"Could not request results from service;")
+        print(f"Sistem hatası: {e}")
