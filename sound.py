@@ -1,24 +1,38 @@
-import speech_recognition as sr
+from gtts import gTTS
+import os
 
-def speech_to_text():
-    # Recognizer ve Microphone nesnelerini oluştur
-    recognizer = sr.Recognizer()
-    microphone = sr.Microphone()
+# Kullanıcıdan hangi sesi istediğini seçmesini isteyelim
 
-    # Mikrofonu kullanarak ses kaydı başlat
-    with microphone as source:
-        print("Lütfen konuşun...")
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source, phrase_time_limit=5)
 
-    # Ses kaydını metne dönüştür
-    try:
-        text = recognizer.recognize_google(audio, language="tr-TR")
-        print("Söyledikleriniz: " + text)
-    except sr.UnknownValueError:
-        print("Anlaşılamayan bir konuşma.")
-    except sr.RequestError as e:
-        print(f"Google Speech Recognition servisinden sonuç alınamadı; {e}")
+while True:# Seçilen sesi oluşturalım ve kaydedelim (sadece bir kere)
+    giris = int(input("""Hangi sesi istersiniz?
+          -1 = Merhaba
+          -2 = Selam
+          -3 = Tamam
+          -4 = Başarısız oldu
+          -5 = çıkış
+          Cevabınız: """))
+    if giris == 1:
+        tts = gTTS(text='merhaba', lang='tr')
+        tts.save("merhaba.mp3")
+    elif giris == 2:
+        tts = gTTS(text='selam', lang='tr')
+        tts.save("selam.mp3")
+    elif giris == 3:
+        tts = gTTS(text='tamam', lang='tr')
+        tts.save("tamam.mp3")
+    elif giris == 4:
+        tts = gTTS(text='başarısız oldu', lang='tr')
+        tts.save("basarisiz.mp3")
+    elif giris == 5:
+        print("bay bay")
+        break
+    else:
+        print("Lütfen 1-5 arasında bir seçim yapınız")
+        exit()
 
-if __name__ == "__main__":
-    speech_to_text()
+# Dosyayı oynatmak için ise burada os.system() kullanabiliriz
+    os.system("start {}.mp3".format("merhaba" if giris == 1 else 
+                                "selam" if giris == 2 else 
+                                "tamam" if giris == 3 else 
+                                "basarisiz"))
