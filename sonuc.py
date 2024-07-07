@@ -16,12 +16,10 @@ def speech_to_text():
         print("Söyledikleriniz: " + text)
         if text == "bilgisayar":
             os.system("start yusuf_dovus.mp3")
-        if text.lower() == "yusuf":
+        elif text.lower() == "yusuf":
             os.system("start tetek.mp3")
-        if text.lower() == "anne":
+        elif text.lower() == "anne":
             os.system("start anne.mp3")
-        if text.lower() == "baba":
-            os.system("start baba.mp3")
     except sr.UnknownValueError:
         print("Anlaşılamayan bir konuşma.")
     except sr.RequestError as e:
