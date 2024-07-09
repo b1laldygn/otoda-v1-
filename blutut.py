@@ -1,9 +1,9 @@
 import asyncio
 from bleak import BleakScanner
 
-async def tarama():
-    cihazlar = await BleakScanner.discover()
-    for cihaz in cihazlar:
-        print(f"Cihaz Adı: {cihaz.name}, MAC Adresi: {cihaz.address}")
+async def scan_devices():
+    devices = await BleakScanner.discover()
+    for device in devices:
+        print(f"Name: {device.name}, Address: {device.address}")
 
-asyncio.run(tarama())
+asyncio.run(scan_devices())
