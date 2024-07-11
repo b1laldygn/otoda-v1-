@@ -29,7 +29,7 @@ def connect_to_device(target_name):
         return None
 
 if __name__ == "__main__":
-    target_device_name = "Hedef Cihaz İsmi"  # Bağlanmak istediğiniz cihazın ismini buraya yazın
+    target_device_name = "KTOOLS AIRTONES"  # Bağlanmak istediğiniz cihazın ismini buraya yazın
     sock = connect_to_device(target_device_name)
     if sock:
         # Bağlantı başarılıysa, burada veri gönderme/alma işlemlerini yapabilirsiniz
