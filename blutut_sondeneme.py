@@ -1,4 +1,6 @@
 import bluetooth
+import os
+from gtts import gTTS
 
 def list_bluetooth_devices():
     print("Bluetooth cihazları aranıyor...")
@@ -29,10 +31,9 @@ def connect_to_device(target_name):
         return None
 
 if __name__ == "__main__":
-    target_device_name = "KTOOLS AIRTONES"  # Bağlanmak istediğiniz cihazın ismini buraya yazın
+    target_device_name = input("cihaz isimi giriniz")  # Bağlanmak istediğiniz cihazın ismini buraya yazın
     sock = connect_to_device(target_device_name)
     if sock:
         # Bağlantı başarılıysa, burada veri gönderme/alma işlemlerini yapabilirsiniz
         # Örnek olarak bir mesaj gönderelim
-        sock.send("Merhaba, bu bir test mesajıdır.")
-        sock.close()
+        os.system("start yusuf_dovus.mp3")
