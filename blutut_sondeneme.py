@@ -21,7 +21,6 @@ def connect_to_device(target_name):
 
     if target_address is not None:
         print(f"{target_name} cihazına bağlanılıyor ({target_address})...")
-        # Burada RFCOMM soketi oluşturuyoruz
         sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
         sock.connect((target_address, 1))
         print(f"{target_name} cihazına başarıyla bağlanıldı!")
@@ -31,9 +30,7 @@ def connect_to_device(target_name):
         return None
 
 if __name__ == "__main__":
-    target_device_name = input("cihaz isimi giriniz")  # Bağlanmak istediğiniz cihazın ismini buraya yazın
+    target_device_name = input("cihaz isimi giriniz : ")
     sock = connect_to_device(target_device_name)
     if sock:
-        # Bağlantı başarılıysa, burada veri gönderme/alma işlemlerini yapabilirsiniz
-        # Örnek olarak bir mesaj gönderelim
         os.system("start yusuf_dovus.mp3")
